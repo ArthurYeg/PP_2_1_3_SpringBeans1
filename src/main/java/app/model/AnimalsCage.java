@@ -9,30 +9,26 @@ import java.time.format.DateTimeFormatter;
 
 
 @Component
+
 public class AnimalsCage {
 
-    @Autowired
+    private Timer timer=new Timer();
+
+
     @Qualifier("dog")
     private Animal animal;
 
-    private String lastTimeOutput;
 
-    @Autowired
-    private Timer timer;
 
     public Timer getTimer() {
         return timer;
     }
     public void whatAnimalSay() {
 
-        if (lastTimeOutput == null) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            lastTimeOutput = LocalDateTime.now().format(formatter);
-        }
         System.out.println("Say:");
         System.out.println(animal.toString());
         System.out.println("At:");
-        System.out.println(lastTimeOutput);
+        System.out.println(timer.getTime());
         System.out.println("________________________");
     }
 }
